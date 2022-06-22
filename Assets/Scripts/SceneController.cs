@@ -1,36 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
+using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    public static Action onEnemyAppeared;
-
-    [SerializeField] private GameObject enemyPrefab;
-    private GameObject _enemy;
-
-    [SerializeField] private GameObject playerPrefab;
-    private GameObject _player;
-
-    public RandomNumber randomNumber;
-
-    private void Awake()
+    public void StartGame()
     {
-        if (_player == null)
-        {
-            _player = Instantiate(playerPrefab) as GameObject;
-            _player.transform.position = new Vector2(-9, -4.5f);
-        }
+        SceneManager.LoadScene(1);
     }
 
-    private void Update()
+    public void DeadPlayer()
     {
-        if (_enemy == null)
-        {
-            _enemy = Instantiate(enemyPrefab) as GameObject;
-            _enemy.transform.position = new Vector2(randomNumber.RandomRange(-9, 9), 5);
-            onEnemyAppeared?.Invoke();
-        }
+        SceneManager.LoadScene(0);
     }
 }
