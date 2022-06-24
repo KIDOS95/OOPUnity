@@ -6,4 +6,9 @@ public class NewRandom : MonoBehaviour
     {
         return Random.Range(minValue, maxValue + 1);
     }
+
+    public float Roulette(float minValue, float maxValue)
+    {
+        return Random.Range(minValue, maxValue + 1f);
+    }
 }

@@ -3,30 +3,24 @@ using UnityEngine;
 public class Enemy : Essence
 {
     private Player player;
-    private Collider2D playerCollider;
 
-    private Rigidbody2D enemyPhisics;
+    private Rigidbody2D enemyPhysics;
 
+    [SerializeField] private float speed;
+    [SerializeField] private float agroDistance;
+    [SerializeField] private bool playerDestroy;
     private int _atackDamage;
-    public float speed;
-    public float agroDistance;
-    public bool playerDestroy;
-
-
-    public void LinkPlayer()
-    {
-            player = GameObject.FindGameObjectWithTag
-                ("Player").GetComponent<Player>();
-            playerCollider = GameObject.FindGameObjectWithTag
-                ("Player").GetComponent<Collider2D>();         
-    }
 
 
     void Awake()
     {
         _atackDamage = 1;
-        enemyPhisics = GetComponent<Rigidbody2D>();
-        LinkPlayer();
+        enemyPhysics = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        player = Player.Instance;
     }
 
     private void Update()
@@ -58,30 +52,25 @@ public class Enemy : Essence
         if (player.transform.position.x
             < transform.position.x)
         {
-            enemyPhisics.velocity = new Vector2(-speed, 0);
+            enemyPhysics.velocity = new Vector2(-speed, 0);
         }
         else if (player.transform.position.x
             > transform.position.x)
         {
-            enemyPhisics.velocity = new Vector2(speed, 0);
+            enemyPhysics.velocity = new Vector2(speed, 0);
         }
     }
 
     private void StopHunting()
     {
-        enemyPhisics.velocity = new Vector2(0, 0);
+        enemyPhysics.velocity = new Vector2(0, 0);
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (playerCollider == collision)
+        if (collision.TryGetComponent(out Player player))
         {
             player.TakeDamage(_atackDamage);
         }
-    }
-
-    public override void TakeDamage(int amount)
-    {
-        base.TakeDamage(amount);
     }
 }

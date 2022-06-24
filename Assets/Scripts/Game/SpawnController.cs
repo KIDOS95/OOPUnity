@@ -5,7 +5,6 @@ using System;
 
 public class SpawnController : MonoBehaviour
 {
-    public static Action onEnemyAppeared;
 
     [SerializeField] private GameObject enemyPrefab;
     private GameObject _enemy;
@@ -13,7 +12,6 @@ public class SpawnController : MonoBehaviour
     [SerializeField] private GameObject playerPrefab;
     private GameObject _player;
 
-    public NewRandom randomNumber;
 
     private void Awake()
     {
@@ -29,8 +27,8 @@ public class SpawnController : MonoBehaviour
         if (_enemy == null)
         {
             _enemy = Instantiate(enemyPrefab) as GameObject;
-            _enemy.transform.position = new Vector2(randomNumber.Roulette(-9, 9), 5);
-            onEnemyAppeared?.Invoke();
+            _enemy.transform.position = new Vector2
+                (UnityEngine.Random.Range(-9,10), transform.position.y);
         }
     }
 }

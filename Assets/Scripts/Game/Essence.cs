@@ -18,7 +18,7 @@ public class Essence : MonoBehaviour
 
     public virtual void FellAbyss()
     {
-        if (this.gameObject.transform.position.y <= -10)
+        if (this.gameObject.transform.position.y <= -6)
         {
             Destroy(this.gameObject);
         }

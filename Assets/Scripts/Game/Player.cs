@@ -1,37 +1,23 @@
 using UnityEngine;
-
+using System;
 
 public class Player : Essence
 {
-    private Enemy _enemy;
-    private Collider2D _enemyCollider;
+    public static Player Instance { get; private set; }
+
+    public static Action onPlayerAppeared;
+
     private Rigidbody2D playerRigidbody;
     private SceneController _sceneController;
 
     private int _atackDamage;
 
-
-
-    private void OnEnable()
-    {
-        SpawnController.onEnemyAppeared += LinkEnemy;
-    }
-  
-    private void OnDestroy()
-    {
-        SpawnController.onEnemyAppeared -= LinkEnemy;
-    }
-    
-    private void LinkEnemy()
-    {
-        _enemy = GameObject.FindGameObjectWithTag
-            ("Enemy").GetComponent<Enemy>();
-        _enemyCollider = GameObject.FindGameObjectWithTag
-            ("Enemy").GetComponent<Collider2D>();
-    }
- 
     private void Awake()
     {
+        Instance = this;
+
+        onPlayerAppeared?.Invoke();
+
         _atackDamage = 1;
         playerRigidbody = GetComponent<Rigidbody2D>();
         _sceneController = GameObject.FindGameObjectWithTag
@@ -48,9 +34,9 @@ public class Player : Essence
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (_enemyCollider == collision)
+        if (collision.TryGetComponent(out Enemy enemy))
         {
-            _enemy.TakeDamage(_atackDamage);
+            enemy.TakeDamage(_atackDamage);
         }
     }
 
@@ -91,7 +77,7 @@ public class Player : Essence
     public override void FellAbyss()
     {
         base.FellAbyss();
-        if (this.gameObject.transform.position.y <= -10)
+        if (this.gameObject.transform.position.y <= -6)
             _sceneController.DeadPlayer();
     }
 }
