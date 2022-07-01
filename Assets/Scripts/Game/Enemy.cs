@@ -1,26 +1,25 @@
 using UnityEngine;
+using System;
 
 public class Enemy : Essence
 {
-    private Player player;
+    public static Action onEnemyDestroy;
 
-    private Rigidbody2D enemyPhysics;
+    private Player _player;
+    private Rigidbody2D _enemyPhysics;
 
-    [SerializeField] private float speed;
-    [SerializeField] private float agroDistance;
-    [SerializeField] private bool playerDestroy;
     private int _atackDamage;
 
 
     void Awake()
     {
         _atackDamage = 1;
-        enemyPhysics = GetComponent<Rigidbody2D>();
+        _enemyPhysics = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
     {
-        player = Player.Instance;
+        _player = Player.Instance;
     }
 
     private void Update()
@@ -29,12 +28,21 @@ public class Enemy : Essence
         FellAbyss();
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out Player player))
+        {
+            player.TakeDamage(_atackDamage);
+        }
+    }
+
+    [SerializeField] private float agroDistance;
     private void WalkEnemy()
     {
-        if (player != null)
+        if (_player != null)
         {
             float disToPlayer = Vector2.Distance
-            (transform.position, player.transform.position);
+            (transform.position, _player.transform.position);
 
             if (disToPlayer < agroDistance)
             {
@@ -47,30 +55,29 @@ public class Enemy : Essence
         }
     }
 
+    [SerializeField] private float speed;
     private void StartHunting()
     {
-        if (player.transform.position.x
+        if (_player.transform.position.x
             < transform.position.x)
         {
-            enemyPhysics.velocity = new Vector2(-speed, 0);
+            _enemyPhysics.velocity = new Vector2(-speed, 0);
         }
-        else if (player.transform.position.x
+        else if (_player.transform.position.x
             > transform.position.x)
         {
-            enemyPhysics.velocity = new Vector2(speed, 0);
+            _enemyPhysics.velocity = new Vector2(speed, 0);
         }
     }
 
     private void StopHunting()
     {
-        enemyPhysics.velocity = new Vector2(0, 0);
+        _enemyPhysics.velocity = new Vector2(0, 0);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public override void EntityDeath()
     {
-        if (collision.TryGetComponent(out Player player))
-        {
-            player.TakeDamage(_atackDamage);
-        }
+        base.EntityDeath();
+        onEnemyDestroy?.Invoke();
     }
 }

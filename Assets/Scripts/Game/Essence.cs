@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Essence : MonoBehaviour
+public abstract class Essence : MonoBehaviour
 {
     private int _health = 1;
     private int _minHealth = 0;
@@ -12,7 +10,7 @@ public class Essence : MonoBehaviour
         _health -= amount;
         if (_health <= _minHealth)
         {
-            Destroy(this.gameObject);
+            EntityDeath();
         }
     }
 
@@ -20,7 +18,12 @@ public class Essence : MonoBehaviour
     {
         if (this.gameObject.transform.position.y <= -6)
         {
-            Destroy(this.gameObject);
+            EntityDeath();
         }
+    }
+
+    public virtual void EntityDeath()
+    {
+        Destroy(this.gameObject);
     }
 }

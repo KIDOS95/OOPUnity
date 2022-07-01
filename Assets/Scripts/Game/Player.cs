@@ -3,27 +3,26 @@ using System;
 
 public class Player : Essence
 {
+    public static Action onPlayerDestroy;
+
     public static Player Instance { get; private set; }
 
-    public static Action onPlayerAppeared;
-
-    private Rigidbody2D playerRigidbody;
+    private Rigidbody2D _playerRigidbody;
     private SceneController _sceneController;
 
     private int _atackDamage;
+
 
     private void Awake()
     {
         Instance = this;
 
-        onPlayerAppeared?.Invoke();
-
         _atackDamage = 1;
-        playerRigidbody = GetComponent<Rigidbody2D>();
+        _playerRigidbody = GetComponent<Rigidbody2D>();
         _sceneController = GameObject.FindGameObjectWithTag
             ("Scene").GetComponent<SceneController>();
     }
-        
+
     private void FixedUpdate()
     {
         Walk();
@@ -45,19 +44,20 @@ public class Player : Essence
     public void Walk()
     {
         moveVector.x = Input.GetAxis("Horizontal");
-        playerRigidbody.velocity = new Vector2
-            (moveVector.x * speed, playerRigidbody.velocity.y);
+        _playerRigidbody.velocity = new Vector2
+            (moveVector.x * speed, _playerRigidbody.velocity.y);
     }
 
+    [Space(10)]
     [SerializeField] private float jumpForse = 7f;
     public void Jump()
     {
         if (Input.GetKey(KeyCode.Space) && onGround)
         {
-            playerRigidbody.AddForce(Vector2.up * jumpForse);
+            _playerRigidbody.AddForce(Vector2.up * jumpForse);
         }
     }
-
+    [Space(10)]
     [SerializeField] private bool onGround;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float checkRadius;
@@ -68,16 +68,10 @@ public class Player : Essence
             (groundCheck.position, checkRadius, ground);
     }
 
-    public override void TakeDamage(int amount)
+    public override void EntityDeath()
     {
-        base.TakeDamage(amount);
+        base.EntityDeath();
+        onPlayerDestroy?.Invoke();
         _sceneController.DeadPlayer();
-    }
-
-    public override void FellAbyss()
-    {
-        base.FellAbyss();
-        if (this.gameObject.transform.position.y <= -6)
-            _sceneController.DeadPlayer();
     }
 }

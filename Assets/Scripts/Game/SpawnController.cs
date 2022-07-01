@@ -1,18 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class SpawnController : MonoBehaviour
 {
-
-    [SerializeField] private GameObject enemyPrefab;
-    private GameObject _enemy;
-
     [SerializeField] private GameObject playerPrefab;
     private GameObject _player;
-
-
     private void Awake()
     {
         if (_player == null)
@@ -22,6 +13,9 @@ public class SpawnController : MonoBehaviour
         }
     }
 
+
+    [SerializeField] private GameObject enemyPrefab;
+    private GameObject _enemy;
     private void Update()
     {
         if (_enemy == null)
