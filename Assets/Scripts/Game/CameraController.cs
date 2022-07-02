@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
         _player = Player.Instance;
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         Vector3 temp = transform.position;
         if (_player != null) 

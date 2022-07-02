@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 11103137}
   - component: {fileID: 11103138}
+  - component: {fileID: 11103139}
   m_Layer: 0
   m_Name: forest
   m_TagString: Untagged
@@ -148,7 +149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 11103136}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.02, y: -0.81, z: -1.86}
+  m_LocalPosition: {x: 0.02, y: -0.81, z: -6.6}
   m_LocalScale: {x: 0.6865717, y: 0.6865717, z: 0.6865717}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -209,6 +210,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &11103139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11103136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b895dff34b552794f977ec9f6410e6ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followingTarget: {fileID: 467366488}
+  parallaxStrength: 0.35
+  disableVerticalParallax: 1
 --- !u!1 &43704163
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,6 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 43704164}
   - component: {fileID: 43704165}
+  - component: {fileID: 43704166}
   m_Layer: 0
   m_Name: mountain
   m_TagString: Untagged
@@ -295,6 +312,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &43704166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43704163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b895dff34b552794f977ec9f6410e6ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followingTarget: {fileID: 467366488}
+  parallaxStrength: 0.5
+  disableVerticalParallax: 1
 --- !u!1 &115675927
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,6 +589,7 @@ GameObject:
   m_Component:
   - component: {fileID: 442756522}
   - component: {fileID: 442756523}
+  - component: {fileID: 442756524}
   m_Layer: 0
   m_Name: forest (1)
   m_TagString: Untagged
@@ -572,7 +605,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 442756521}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.02, y: -0.81, z: -3.23}
+  m_LocalPosition: {x: 0.02, y: -0.81, z: -10.9}
   m_LocalScale: {x: 0.6865717, y: 0.6865717, z: 0.6865717}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -633,6 +666,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &442756524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442756521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b895dff34b552794f977ec9f6410e6ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followingTarget: {fileID: 467366488}
+  parallaxStrength: 0.25
+  disableVerticalParallax: 1
 --- !u!1 &467366485
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,7 +732,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 10
+  far clip plane: 25
   field of view: 60
   orthographic: 1
   orthographic size: 5
@@ -939,6 +987,7 @@ GameObject:
   m_Component:
   - component: {fileID: 744142206}
   - component: {fileID: 744142207}
+  - component: {fileID: 744142208}
   m_Layer: 0
   m_Name: clouds
   m_TagString: Untagged
@@ -954,7 +1003,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 744142205}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.02, y: -0.81, z: 0}
+  m_LocalPosition: {x: 0.02, y: -0.81, z: 4.4}
   m_LocalScale: {x: 0.6865717, y: 0.6865717, z: 0.6865717}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1015,6 +1064,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &744142208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744142205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b895dff34b552794f977ec9f6410e6ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followingTarget: {fileID: 467366488}
+  parallaxStrength: 0.7
+  disableVerticalParallax: 1
 --- !u!1 &1010565682
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,6 +1089,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1010565683}
   - component: {fileID: 1010565684}
+  - component: {fileID: 1010565685}
   m_Layer: 0
   m_Name: forest (3)
   m_TagString: Untagged
@@ -1040,7 +1105,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1010565682}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.02, y: -0.81, z: -5.96}
+  m_LocalPosition: {x: 0.02, y: -0.81, z: -17.8}
   m_LocalScale: {x: 0.6865717, y: 0.6865717, z: 0.6865717}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1101,6 +1166,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1010565685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010565682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b895dff34b552794f977ec9f6410e6ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followingTarget: {fileID: 467366488}
+  parallaxStrength: 0
+  disableVerticalParallax: 1
 --- !u!1 &1130058480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1300,7 +1380,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413401683}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -38, y: 0, z: 0}
+  m_LocalPosition: {x: -32.6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1347,10 +1427,10 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: fef313e9e50b616428d3b514879e5d45, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -1491,11 +1571,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 1
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 600, y: 400}
+  m_ScreenMatchMode: 2
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -1797,8 +1877,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -9}
-  m_SizeDelta: {x: 104.95, y: 26.24}
+  m_AnchoredPosition: {x: 7.5, y: -9}
+  m_SizeDelta: {x: 44.72, y: 11.18}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1568478068
 MonoBehaviour:
@@ -1847,7 +1927,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.35
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1922,6 +2002,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1698463513}
   - component: {fileID: 1698463514}
+  - component: {fileID: 1698463515}
   m_Layer: 0
   m_Name: forest (2)
   m_TagString: Untagged
@@ -1937,7 +2018,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1698463512}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.02, y: -0.81, z: -4.59}
+  m_LocalPosition: {x: 0.02, y: -0.81, z: -15}
   m_LocalScale: {x: 0.6865717, y: 0.6865717, z: 0.6865717}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1998,6 +2079,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1698463515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698463512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b895dff34b552794f977ec9f6410e6ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followingTarget: {fileID: 467366488}
+  parallaxStrength: 0.1
+  disableVerticalParallax: 1
 --- !u!1 &1824566982
 GameObject:
   m_ObjectHideFlags: 0
@@ -2107,7 +2203,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909739648}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 38.4, y: 0, z: 0}
+  m_LocalPosition: {x: 38.06, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2154,7 +2250,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: fef313e9e50b616428d3b514879e5d45, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -2407,7 +2503,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2009744819}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.98, y: -0.56, z: 5.41}
+  m_LocalPosition: {x: 0.98, y: -0.56, z: 16.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

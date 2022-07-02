@@ -57,6 +57,7 @@ public class Player : Essence
             _playerRigidbody.AddForce(Vector2.up * jumpForse);
         }
     }
+
     [Space(10)]
     [SerializeField] private bool onGround;
     [SerializeField] private Transform groundCheck;
