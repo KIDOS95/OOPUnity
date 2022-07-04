@@ -9,7 +9,7 @@ public class SpawnController : MonoBehaviour
         if (_player == null)
         {
             _player = Instantiate(playerPrefab) as GameObject;
-            _player.transform.position = new Vector2(-9, -4.5f);
+            _player.transform.position = new Vector2(0, -4.5f);
         }
     }
 

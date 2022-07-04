@@ -1,5 +1,6 @@
-using UnityEngine;
 using System;
+using UnityEngine;
+
 
 public class Player : Essence
 {
@@ -9,6 +10,19 @@ public class Player : Essence
 
     private Rigidbody2D _playerRigidbody;
     private SceneController _sceneController;
+
+
+    [SerializeField] private Vector2 moveVector;
+    [Space(10)]
+    [SerializeField] private float speed = 2f;
+    [SerializeField] private float jumpForse = 7f;
+    [Space(10)]
+    [SerializeField] private bool onGround;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private float checkRadius;
+    [SerializeField] private LayerMask ground;
+    [SerializeField] private GameObject partiñleDeath;
+    [Space(10)]
 
     private int _atackDamage;
 
@@ -28,7 +42,6 @@ public class Player : Essence
         Walk();
         Jump();
         CheckingGround();
-        FellAbyss();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -39,8 +52,6 @@ public class Player : Essence
         }
     }
 
-    [SerializeField] private Vector2 moveVector;
-    [SerializeField] private float speed = 2f;
     public void Walk()
     {
         moveVector.x = Input.GetAxis("Horizontal");
@@ -48,8 +59,6 @@ public class Player : Essence
             (moveVector.x * speed, _playerRigidbody.velocity.y);
     }
 
-    [Space(10)]
-    [SerializeField] private float jumpForse = 7f;
     public void Jump()
     {
         if (Input.GetKey(KeyCode.Space) && onGround)
@@ -58,11 +67,6 @@ public class Player : Essence
         }
     }
 
-    [Space(10)]
-    [SerializeField] private bool onGround;
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private float checkRadius;
-    [SerializeField] private LayerMask ground;
     private void CheckingGround()
     {
         onGround = Physics2D.OverlapCircle
@@ -71,6 +75,10 @@ public class Player : Essence
 
     public override void EntityDeath()
     {
+        partiñleDeath.transform.position =
+            gameObject.transform.position;
+        Instantiate(partiñleDeath);
+
         base.EntityDeath();
         onPlayerDestroy?.Invoke();
         _sceneController.DeadPlayer();

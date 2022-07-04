@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class JsonController : MonoBehaviour
+public static class JsonController
 {
     public static Item item;
 
@@ -21,10 +21,8 @@ public class JsonController : MonoBehaviour
             "/GameSave.json", JsonUtility.ToJson(item));
     }
 
-    [System.Serializable]
     public class Item
     {
         public int RecordPoints;
     }
-
 }

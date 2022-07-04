@@ -1,9 +1,14 @@
 using UnityEngine;
 
-public abstract class Essence : MonoBehaviour
+public class Essence : MonoBehaviour
 {
     private int _health = 1;
     private int _minHealth = 0;
+
+    public void Update()
+    {
+        FellAbyss();
+    }
 
     public virtual void TakeDamage(int amount)
     {

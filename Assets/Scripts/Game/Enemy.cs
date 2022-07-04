@@ -1,12 +1,17 @@
 using UnityEngine;
 using System;
 
+
 public class Enemy : Essence
 {
     public static Action onEnemyDestroy;
 
     private Player _player;
     private Rigidbody2D _enemyPhysics;
+
+    [SerializeField] private float agroDistance;
+    [SerializeField] private float speed;
+    [SerializeField] private GameObject partiñleDeath;
 
     private int _atackDamage;
 
@@ -22,10 +27,9 @@ public class Enemy : Essence
         _player = Player.Instance;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         WalkEnemy();
-        FellAbyss();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -35,8 +39,7 @@ public class Enemy : Essence
             player.TakeDamage(_atackDamage);
         }
     }
-
-    [SerializeField] private float agroDistance;
+    
     private void WalkEnemy()
     {
         if (_player != null)
@@ -55,7 +58,6 @@ public class Enemy : Essence
         }
     }
 
-    [SerializeField] private float speed;
     private void StartHunting()
     {
         if (_player.transform.position.x
@@ -77,7 +79,13 @@ public class Enemy : Essence
 
     public override void EntityDeath()
     {
+        partiñleDeath.transform.position =
+            gameObject.transform.position;
+        Instantiate(partiñleDeath);
+
         base.EntityDeath();
         onEnemyDestroy?.Invoke();
     }
 }
+
+

@@ -1,27 +1,35 @@
-using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine;
+
 
 public class SceneController : MonoBehaviour
 {
     public void Update()
     {
         if (Input.GetKey(KeyCode.Space) && 
-            (int)Scens.Menu == SceneManager.GetActiveScene().buildIndex)
+            (int)Scenes.Menu == SceneManager.GetActiveScene().buildIndex)
         SceneManager.LoadScene(1);
     }
 
     public void StartGame()
     {
-        SceneManager.LoadScene((int)Scens.Game);
+        SceneManager.LoadScene((int)Scenes.Game);
     }
 
     public void DeadPlayer()
     {
-        SceneManager.LoadScene((int)Scens.Menu);
+        StartCoroutine(AwarenessofLoss());
+    }
+
+    private IEnumerator AwarenessofLoss()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene((int)Scenes.Menu);
     }
 }
 
-enum Scens
+enum Scenes
 {
     Menu,
     Game

@@ -6,6 +6,8 @@ public class NumberPoints : MonoBehaviour
     TextMeshProUGUI textMesh;
     [SerializeField] private Scores scores;
     [SerializeField] private int score;
+    [SerializeField] private int maxScore;
+
 
     public void Start()
     {
@@ -36,14 +38,13 @@ public class NumberPoints : MonoBehaviour
         Player.onPlayerDestroy -= SevingPoints;
     }
 
-    public void EnemyDestroyed()
+    private void EnemyDestroyed()
     {
         score++;
         textMesh.text = score.ToString();
     }
 
-    [SerializeField] private int maxScore;
-    public void SevingPoints()
+    private void SevingPoints()
     {
         JsonController.LoadField();
         maxScore = JsonController.item.RecordPoints;
