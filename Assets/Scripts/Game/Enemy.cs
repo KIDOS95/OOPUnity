@@ -29,7 +29,7 @@ public class Enemy : Essence
 
     private void FixedUpdate()
     {
-        WalkEnemy();
+        Walk();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -39,8 +39,8 @@ public class Enemy : Essence
             player.TakeDamage(_atackDamage);
         }
     }
-    
-    private void WalkEnemy()
+
+    protected override void Walk()
     {
         if (_player != null)
         {
@@ -77,7 +77,7 @@ public class Enemy : Essence
         _enemyPhysics.velocity = new Vector2(0, 0);
     }
 
-    public override void EntityDeath()
+    protected override void EntityDeath()
     {
         partiñleDeath.transform.position =
             gameObject.transform.position;

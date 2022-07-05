@@ -9,7 +9,7 @@ public class NumberPoints : MonoBehaviour
     [SerializeField] private int maxScore;
 
 
-    public void Start()
+    private void Start()
     {
         textMesh = GetComponent<TextMeshProUGUI>();
 

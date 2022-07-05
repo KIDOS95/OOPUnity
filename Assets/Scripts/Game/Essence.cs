@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Essence : MonoBehaviour
+public abstract class Essence : MonoBehaviour
 {
     private int _health = 1;
     private int _minHealth = 0;
@@ -10,7 +10,9 @@ public class Essence : MonoBehaviour
         FellAbyss();
     }
 
-    public virtual void TakeDamage(int amount)
+    protected abstract void Walk();
+
+    public void TakeDamage(int amount)
     {
         _health -= amount;
         if (_health <= _minHealth)
@@ -19,7 +21,7 @@ public class Essence : MonoBehaviour
         }
     }
 
-    public virtual void FellAbyss()
+    protected void FellAbyss()
     {
         if (this.gameObject.transform.position.y <= -6)
         {
@@ -27,7 +29,7 @@ public class Essence : MonoBehaviour
         }
     }
 
-    public virtual void EntityDeath()
+    protected virtual void EntityDeath()
     {
         Destroy(this.gameObject);
     }

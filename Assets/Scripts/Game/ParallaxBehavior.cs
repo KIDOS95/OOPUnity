@@ -8,7 +8,7 @@ public class ParallaxBehavior : MonoBehaviour
     [SerializeField] private bool disableVerticalParallax;
     private Vector3 targetPreviousPosition;
     
-    void Start()
+    private void Start()
     {
         if (!followingTarget)
             followingTarget = Camera.main.transform;
@@ -16,7 +16,7 @@ public class ParallaxBehavior : MonoBehaviour
         targetPreviousPosition = followingTarget.position;
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         var delta = followingTarget.position - targetPreviousPosition;
 

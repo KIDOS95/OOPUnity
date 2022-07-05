@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class SceneController : MonoBehaviour
 {
-    public void Update()
+    private void Update()
     {
         if (Input.GetKey(KeyCode.Space) && 
             (int)Scenes.Menu == SceneManager.GetActiveScene().buildIndex)
         SceneManager.LoadScene(1);
     }
 
-    public void StartGame()
+    private void StartGame()
     {
         SceneManager.LoadScene((int)Scenes.Game);
     }

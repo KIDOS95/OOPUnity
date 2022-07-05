@@ -52,7 +52,7 @@ public class Player : Essence
         }
     }
 
-    public void Walk()
+    protected override void Walk()
     {
         moveVector.x = Input.GetAxis("Horizontal");
         _playerRigidbody.velocity = new Vector2
@@ -73,7 +73,7 @@ public class Player : Essence
             (groundCheck.position, checkRadius, ground);
     }
 
-    public override void EntityDeath()
+    protected override void EntityDeath()
     {
         partiñleDeath.transform.position =
             gameObject.transform.position;

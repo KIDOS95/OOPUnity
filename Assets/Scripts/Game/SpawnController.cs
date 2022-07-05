@@ -4,6 +4,10 @@ public class SpawnController : MonoBehaviour
 {
     [SerializeField] private GameObject playerPrefab;
     private GameObject _player;
+    [SerializeField] private GameObject enemyPrefab;
+    private GameObject _enemy;
+
+
     private void Awake()
     {
         if (_player == null)
@@ -12,10 +16,7 @@ public class SpawnController : MonoBehaviour
             _player.transform.position = new Vector2(0, -4.5f);
         }
     }
-
-
-    [SerializeField] private GameObject enemyPrefab;
-    private GameObject _enemy;
+    
     private void Update()
     {
         if (_enemy == null)
