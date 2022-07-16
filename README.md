@@ -5,8 +5,8 @@ The goal of the project is to study OOP in unity, as well as to use its paradigm
 - [X] Inheritance.
 - [X] Encapsulation.
 - [X] Polymorphism.
-- [X] Abstraction.
-- [X] Reuse.
+- [ ] Abstraction.
+- [ ] Reuse.
 - [X] Sending messages.
 
 # How to play
